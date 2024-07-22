@@ -11,14 +11,17 @@ let id = params.get("id");
 
 
 async function getSinglePost() {
-    try{
+    try {
         const api = `https://v2.api.noroff.dev/blog/posts/hallotre/${id}`;
         const response = await fetch(api);
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
         const postApi = data.data;
+
+        document.title = "HalloBlog | " + postApi.title;
+
         let longDate = postApi.created;
-        let shortDate = longDate.slice(0,10)
+        let shortDate = longDate.slice(0,10);
         let splitDate = shortDate.split('-');
         let date = splitDate[2] + '-' + splitDate[1] + '-' + splitDate[0];
         mainSinglePost.innerHTML = `
@@ -32,12 +35,9 @@ async function getSinglePost() {
             <p>${postApi.body}</p>
         </div>
         `;
-
-
-
-    } catch (error){
-        console.error("Error message: " + error)
-       allPostsCont.innerHTML = `<p>Cant find post</p>`
+    } catch (error) {
+        console.error("Error message: " + error);
+        allPostsCont.innerHTML = `<p>Can't find post</p>`;
     }
 }
 

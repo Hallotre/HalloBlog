@@ -5,7 +5,7 @@ export let isLoggedIn = () => {
     let logOutBtn = document.getElementById("log-out-btn-cont")
 
     if (token && username) {
-        if(window.location.pathname.includes("/index.html") || window.location.pathname === "/blog/" || window.location.pathname == "/blog"){
+        if(window.location.pathname.includes("/index.html") || window.location.pathname === "/HalloBlog/" || window.location.pathname == "/HalloBlog"){
             loggedInOut.innerHTML = `<a href="./account/mypage.html">My page</a>`;
         } else{
         loggedInOut.innerHTML = `<a href="../account/mypage.html">My page</a>`;
@@ -17,14 +17,14 @@ export let isLoggedIn = () => {
             localStorage.removeItem("username");
             localStorage.removeItem("token");
 
-            if(window.location.pathname.includes("/index.html") || window.location.pathname === "/blog/" || window.location.pathname == "/blog"){
+            if(window.location.pathname.includes("/index.html") || window.location.pathname === "/HalloBlog/" || window.location.pathname == "/HalloBlog"){
                 window.location = "./index.html";
             }else{
             window.location = "../index.html";
             }
         });
     } else {
-        if(window.location.pathname.includes("/index.html") || window.location.pathname === "/blog/" || window.location.pathname == "/blog"){
+        if(window.location.pathname.includes("/index.html") || window.location.pathname === "/HalloBlog/" || window.location.pathname == "/HalloBlog"){
         loggedInOut.innerHTML = `<a href="./account/login.html">Sign in</a>`;
         } else{
             loggedInOut.innerHTML = `<a href="../account/login.html">Sign in</a>`
