@@ -28,8 +28,9 @@ async function getSinglePost() {
         <div>
             <img src="${postApi.media.url}" alt="${postApi.media.alt}">
             <div class="single-post-info">
-            <p>${postApi.author.name}</p>
-            <p>Publisert: ${date}</p>
+            <p>Author: ${postApi.author.name}</p>
+            <p>Published: ${postApi.created.slice(0, 10)}</p>
+            <p>Edited: ${postApi.updated.slice(0, 10)}</p>
             </div>
             <h1>${postApi.title}</h1>
             <p>${postApi.body}</p>
