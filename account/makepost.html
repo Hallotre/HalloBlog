@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="EN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Make a new post" />
+    <meta name="keywords" content=""/>
+    <script src="../js/makepost.js" type="module"></script>
+    <link rel="stylesheet" href="../stylesheet.css" />
+    <title>Make post</title>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="../index.html"
+        >HalloBlog
+        <h3></h3></a
+      >
+      <nav class="header-nav">
+        <ul class="nav-menu">
+          <li class="nav-link"><a href="../index.html">Home</a></li>
+          <li class="nav-link"><a href="../post/posts.html">Posts</a></li>
+          <li class="choosen nav-link" id="logged-in-out">Loading..</li>
+          <li class="nav-link" id="log-out-btn-cont">Loading..</li>
+        </ul>
+
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    <main id="main-makepost">
+      <h1>New post</h1>
+      <form id="add-post-form">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required />
+        <div id="editor"></div>
+        <label for="add-post-content">Content</label>
+        <textarea
+          name="content"
+          id="add-post-content"
+          maxlength="2000"
+          required
+        ></textarea>
+
+        <label for="img">Picture link (URL)</label>
+        <input id="img" name="img" type="url" required />
+
+        <label for="alt">Image description</label>
+        <input id="alt" name="alt" type="text" required />
+        <button class="cta-button" type="submit">Publish</button>
+      </form>
+    </main>
+    <footer>
+      <a class="logo" href="../index.html"
+        >HalloBlog
+        <h3></h3></a
+      >
+      <nav class="footer-nav">
+        <a href="../index.html">Home</a>
+        <a href="../post/posts.html">Posts</a>
+      </nav>
+    </footer>
+  </body>
+</html>
