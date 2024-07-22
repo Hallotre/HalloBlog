@@ -326,7 +326,7 @@ right: 10px;
 
 #new-posts-cont{
     display: grid;
-    grid-template-columns: 35% 35% 35%;
+    grid-template-columns: 50% 50%;
     margin: 0 auto;
     padding: 0 var(--inline-margin-big-desktop);
     max-width: 1400px;
