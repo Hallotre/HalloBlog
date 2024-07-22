@@ -49,7 +49,7 @@ h3 {
 p, label {
     font-family: var(--contentfont);
     color: var(--textgrey);
-    font-size: 25px;
+    font-size: 20px;
 }
 
 a {
@@ -532,7 +532,7 @@ text-align: center;
 
 #main-single-post > div > div > p{
     margin: 5px 0;
-    font-size: 16px;
+    font-size: 13px;
     color: var(--textgrey-50);
 }
 
