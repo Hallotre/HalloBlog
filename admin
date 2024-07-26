@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="EN">
+  <head>
+	<meta http-equiv="refresh" content="0;url=/account/login.html" />
+	<title>Redirecting...</title>
+  </head>
+  <body>
+	<p>If you are not redirected automatically, follow this <a href="/account/login.html">link to the login page</a>.</p>
+  </body>
+</html>
