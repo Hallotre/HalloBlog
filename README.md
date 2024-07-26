@@ -1,5 +1,5 @@
 
-## Project Description: HalloBlog - A Responsive Blogging Platform
+## HalloBlog - A Responsive Blogging Platform
 ![HalloBlog](https://socialify.git.ci/Hallotre/HalloBlog/image?font=Rokkitt&language=1&name=1&owner=1&pattern=Circuit%20Board&theme=Dark)
 
 **Overview:**
