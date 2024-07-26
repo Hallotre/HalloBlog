@@ -126,11 +126,11 @@ z-index: 99;
 .nav-menu{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items:center;
-    width: 40vw;
     list-style: none;
-    padding: 0;
+    padding: 0 100px 0 0;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .login-nav-menu{
