@@ -8,10 +8,7 @@ let allPostsCont = document.getElementById("all-posts");
 
 async function getAllPosts() {
     try {
-        let username = localStorage.getItem("username");
-        if (!username) {
-            throw new Error("Username not found in localStorage");
-        }
+        const username = "Hallotre"; // Hardcoded username so everyone can see posts when visiting the site
         const api = `https://v2.api.noroff.dev/blog/posts/${username}/`;
         const response = await fetch(api);
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
