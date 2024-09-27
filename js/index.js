@@ -7,8 +7,12 @@ hamburgerMenu();
 let slideshowCont = document.getElementById("slideshow-cont");
 
 async function getPostsToIndex() {
-    try{
-        const api = `https://v2.api.noroff.dev/blog/posts/hallotre/`;
+    try {
+        let username = localStorage.getItem("username");
+        if (!username) {
+            throw new Error("Username not found in localStorage");
+        }
+        const api = `https://v2.api.noroff.dev/blog/posts/${username}/`;
         const response = await fetch(api);
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
@@ -16,18 +20,18 @@ async function getPostsToIndex() {
         setSlides(indexApi);
         runSlider();
         listNewposts(indexApi);
-    } catch (error){
-        console.error("Error message: " + error)
-       slideshowCont.innerHTML = `<p>No slides found.</p>`
+    } catch (error) {
+        console.error("Error message: " + error);
+        slideshowCont.innerHTML = `<p>No slides found.</p>`;
     }
 }
 
 getPostsToIndex();
 
-function setSlides(api){
+function setSlides(api) {
     slideshowCont.innerHTML = "";
     let container = "";
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         container += `
             <div class="single-slide">
                 <img class="slider-img" src="${api[i].media.url}" alt="${api[i].media.alt}">
@@ -35,25 +39,21 @@ function setSlides(api){
                     <h2>${api[i].title}</h2>
                     <a class="cta-button" href="./post/singlepost.html?id=${api[i].id}">Read more</a>
                 </div>
-            </div>`
+            </div>`;
     }
     slideshowCont.innerHTML = container;
 }
 
-    let slideIndex = 0;
-    let intervalId = null;
-    let allSlides = [];
+let slideIndex = 0;
+let intervalId = null;
+let allSlides = [];
 
 function runSlider() {
     allSlides = document.getElementsByClassName("single-slide");
-    
-
     initializeSlider();
-};
+}
 
-
-
-function initializeSlider(){
+function initializeSlider() {
     if (allSlides.length > 0) {
         allSlides[slideIndex].classList.add("display-slide");
         intervalId = setInterval(nextSlide, 5000);
@@ -65,21 +65,19 @@ function initializeSlider(){
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 
-function nextSlide(){
+function nextSlide() {
     slideIndex++;
     showSlide();
 }
 
 next.addEventListener("click", () => {
-slideIndex++;
-showSlide();
-
+    slideIndex++;
+    showSlide();
 });
 
 prev.addEventListener("click", () => {
-slideIndex--;
-showSlide();
-
+    slideIndex--;
+    showSlide();
 });
 
 function showSlide() {
@@ -94,16 +92,21 @@ function showSlide() {
     allSlides[slideIndex].classList.add("display-slide");
 }
 
-slideshowCont.addEventListener("mouseover", function(){ clearInterval(intervalId)});
+slideshowCont.addEventListener("mouseover", function() {
+    clearInterval(intervalId);
+});
 
-slideshowCont.addEventListener("mouseout", function(){ intervalId = setInterval(nextSlide, 5000);});
+slideshowCont.addEventListener("mouseout", function() {
+    intervalId = setInterval(nextSlide, 5000);
+});
 
 let newPostCont = document.getElementById("new-posts-cont");
 
 function listNewposts(api) {
-    newPostCont.innerHTML = ''; 
-    api.slice(3, 9).forEach(post => {
-        let body = post.body.slice(0, 120); 
+    newPostCont.innerHTML = '';
+    let postsToShow = api.length < 9 ? api : api.slice(3, 9);
+    postsToShow.forEach(post => {
+        let body = post.body.slice(0, 120);
         let postHTML = `<a href="./post/singlepost.html?id=${post.id}" class="single-post">
             <img class="single-post-img" src="${post.media.url}" alt="${post.media.alt}">
             <h2>${post.title}</h2>
@@ -111,5 +114,4 @@ function listNewposts(api) {
         </a>`;
         newPostCont.innerHTML += postHTML;
     });
-    
 }

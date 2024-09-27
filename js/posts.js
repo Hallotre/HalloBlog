@@ -7,22 +7,26 @@ window.addEventListener("load", isLoggedIn);
 let allPostsCont = document.getElementById("all-posts");
 
 async function getAllPosts() {
-    try{
-        const api = `https://v2.api.noroff.dev/blog/posts/hallotre/`;
+    try {
+        let username = localStorage.getItem("username");
+        if (!username) {
+            throw new Error("Username not found in localStorage");
+        }
+        const api = `https://v2.api.noroff.dev/blog/posts/${username}/`;
         const response = await fetch(api);
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
         const postsApi = data.data;
         listAllposts(postsApi);
-    } catch (error){
-        console.error("Error message: " + error)
-       allPostsCont.innerHTML = `<p>No posts found.</p>`
+    } catch (error) {
+        console.error("Error message: " + error);
+        allPostsCont.innerHTML = `<p>No posts found.</p>`;
     }
 }
 
 getAllPosts();
 
-function listAllposts(api){
+function listAllposts(api) {
     allPostsCont.innerHTML = "";
     let cont = "";
     for (let post of api) {
